@@ -1,77 +1,356 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-site-verification" content="oXv9GAVmDIvY8O3Taah_BqbfvsMyZnmWG7zbHsIhC-o" />
-    <title>WatchStore</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #000;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-        }
-        .product {
-            background: #fff;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            width: 250px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .product img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tickz - Premium Watches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0c0c0c;
+      color: white;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1519750783826-e2420f4d687f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      animation: zoomMove 20s infinite alternate ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    @keyframes zoomMove {
+      0% {
+        background-size: 100%;
+      }
+      100% {
+        background-size: 110%;
+      }
+    }
+
+    .hero-section .logo {
+      max-width: 120px;
+    }
+
+    .hero-section .content {
+      text-align: center;
+      margin-top: 20vh;
+    }
+
+    .hero-section h1 {
+      font-size: 48px;
+      color: gold;
+      margin-bottom: 20px;
+    }
+
+    .hero-section p {
+      font-size: 18px;
+      color: #ddd;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .hero-section .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .hero-section .btn:hover {
+      background-color: #f0c000;
+    }
+
+    /* COLLECTIONS */
+    .collections {
+      background-color: #0c0c0c;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .collections h2 {
+      font-size: 36px;
+      color: gold;
+      margin-bottom: 40px;
+    }
+
+    .collection-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      padding: 15px;
+      color: white;
+      font-size: 20px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    /* USP SECTION */
+    .usp {
+      padding: 60px 20px;
+      background-color: #0f0f0f;
+      text-align: center;
+    }
+
+    .usp h2 {
+      color: gold;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .usp-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .usp-item {
+      background-color: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 300px;
+      color: white;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .usp-item:hover {
+      transform: scale(1.05);
+    }
+
+    /* BESTSELLERS */
+    .bestsellers {
+      padding: 60px 20px;
+      background-color: #111;
+      text-align: center;
+    }
+
+    .bestsellers h2 {
+      color: gold;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .product-carousel {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      overflow-x: auto;
+      padding-bottom: 20px;
+    }
+
+    .product-card {
+      min-width: 250px;
+      background-color: #1a1a1a;
+      color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card h3, .product-card p {
+      padding: 10px;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background-color: #0f0f0f;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      color: gold;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .testimonial-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background-color: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      color: white;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.05);
+      font-style: italic;
+    }
+
+    .testimonial h4 {
+      margin-top: 15px;
+      color: gold;
+      font-weight: normal;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #000;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .footer-links a {
+      color: gold;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to WatchStore</h1>
-        <p>Premium Watches for Every Occasion</p>
-    </header>
-    <section class="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/250x200.png?text=Watch+1" alt="Watch 1">
-            <h3>Classic Watch</h3>
-            <p>₹1,999</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/250x200.png?text=Watch+2" alt="Watch 2">
-            <h3>Luxury Watch</h3>
-            <p>₹3,499</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/250x200.png?text=Watch+3" alt="Watch 3">
-            <h3>Sport Watch</h3>
-            <p>₹2,499</p>
-        </div>
-    </section>
-    <footer>
-        <p>Contact us: watchstore@email.com | © 2025 WatchStore</p>
-    </footer>
+
+  <section class="hero-section">
+    <img src="52225D81-86E2-4E5E-BCEB-EF5766CEA5D8.jpeg" alt="Tickz Logo" class="logo" />
+    <div class="content">
+      <h1>Time Meets Luxury</h1>
+      <p>Experience the elegance and craftsmanship of Tickz – where every second counts.</p>
+      <button class="btn">Shop Now</button>
+    </div>
+  </section>
+
+  <section class="collections">
+    <h2>Explore Our Collections</h2>
+    <div class="collection-cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=800&q=80" alt="Men's Watches" />
+        <h3>Men's Watches</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1531064569279-94f7f5f68d93?auto=format&fit=crop&w=800&q=80" alt="Women's Watches" />
+        <h3>Women's Watches</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1588776814546-d029ed9c59fa?auto=format&fit=crop&w=800&q=80" alt="Limited Editions" />
+        <h3>Limited Editions</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="usp">
+    <h2>Why Choose Tickz?</h2>
+    <div class="usp-boxes">
+      <div class="usp-item">
+        <h3>Swiss Precision</h3>
+        <p>Crafted with the finest Swiss movements for flawless timekeeping.</p>
+      </div>
+      <div class="usp-item">
+        <h3>Luxury Materials</h3>
+        <p>Each watch is made using premium metals, sapphire glass & leather.</p>
+      </div>
+      <div class="usp-item">
+        <h3>Bold Identity</h3>
+        <p>Tickz is for those who make time theirs. Distinct. Elegant. Powerful.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bestsellers">
+    <h2>Bestsellers</h2>
+    <div class="product-carousel">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1602782228304-761f43f7788a?auto=format&fit=crop&w=800&q=80" alt="Watch 1">
+        <h3>Phantom Gold</h3>
+        <p>₹29,999</p>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=80" alt="Watch 2">
+        <h3>Midnight Steel</h3>
+        <p>₹24,499</p>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1598032892988-05c6c1f6d3e0?auto=format&fit=crop&w=800&q=80" alt="Watch 3">
+        <h3>Crimson Classic</h3>
+        <p>₹19,999</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-boxes">
+      <div class="testimonial">
+        <p>“Tickz is the only watch brand I trust. Stylish, reliable and makes a statement.”</p>
+        <h4>- Arjun R.</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Premium quality without compromise. The craftsmanship is just brilliant.”</p>
+        <h4>- Meera S.</h4>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Tickz. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
 </body>
 </html>
